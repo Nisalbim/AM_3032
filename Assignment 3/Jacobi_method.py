@@ -2,10 +2,10 @@ import numpy as np
 from numpy.linalg import eig
 
 # initial conditions given
-ep = 10**-3
+ep = 10**-5
 N = 100
-A = np.array([[4,2,-2],[1,-3,-1],[3,-1,4]])
-b = np.array([[0],[7],[5]])
+A = np.array([[1,2,-2],[1,1,1],[2,2,1]])
+b = np.array([[7],[2],[5]])
 X_0 = np.array([[0],[0],[0]])
 
 if all(np.diag(A)) != 0:  # To use Jacobi method metrix A diagonal elements has to be not equal to zero.
@@ -22,10 +22,13 @@ if all(np.diag(A)) != 0:  # To use Jacobi method metrix A diagonal elements has 
         print("Singular Matrix, Inverse not possible.")
 
     T = np.matmul(g,P)  # D^-1(L+U)
+    print(T)
     c = np.matmul(g,b)  # D^-1b
+    print(c)
 
     u,v = eig(T)        # spectrum
     m = max(abs(u))     # spectral radius
+    print(m)
 
     k = 1 # number of iterations
     if m < 1:  # To use Jacobi  method metrix T spectral radius has to be strictly lower than 1.

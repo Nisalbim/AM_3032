@@ -1,14 +1,14 @@
 import sympy as sym #import sympy lib to do differentiations
 
 x = sym.symbols('x') #variable define
-f = x**3 - x -1      #function f define
+f = x**(1/3)    #function f define
 derv = sym.diff(f,x) #differentiate the function
 
 def f(x):
-    return x**3 - x -1
+    return x**(1/3)
 
 #defining the given conditions
-x_0 = 1.5
+x_0 = 5
 ep = 10 ** -4
 N=50
 
@@ -20,8 +20,12 @@ i = 1
 k = 0
 
 #newton raphson method steps
-while error >= ep:
+while abs(error) >= ep:
     val = derv.subs(x, x_n) #derivative calculate
+    if(val==0):
+        print("Derivative become zero")
+        k=2
+        break
     x_i = x_n - f(x_n)/val  #x_n+1 calculate
     error = abs(f(x_i))     #error value |g(x)|
     print(i, '   ', x_i, '   ', error)
@@ -32,7 +36,5 @@ while error >= ep:
     x_n = x_i               #x values updating
     i = i+1
 
-if k != 1:                  #print the root
-    print("root of the equation",x_i)
-
-
+if (k != 1)&(k != 2):                  #print the root
+    print("root of the equation",x_n)
