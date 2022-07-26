@@ -2,14 +2,14 @@ import numpy as np #import numpy lib
 
 #defining the f function
 def f(x):
-    return x**3 + 2*x**2 + x - 1
+    return x**3 + 4*x**2-10
 
 #defining the g function
 def g(x):
-    return #enter the g(x)
+    return ((10/x+4))**0.5
 
 #defining the given conditions
-x_0 = 0.5
+x_0 = 1.5
 ep = 10 ** -5
 
 # inital step was carried out

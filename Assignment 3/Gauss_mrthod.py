@@ -5,8 +5,8 @@ from numpy.linalg import eig
 # initial conditions given
 ep = 10**-4
 N = 100
-A = np.array([[4,2,-2],[1,-3,-1],[3,-1,4]])
-b = np.array([[0],[7],[5]])
+A = np.array([[1,2,-2],[1,1,1],[2,2,1]])
+b = np.array([[7],[2],[5]])
 x_0 = 0
 y_0 = 0
 z_0 = 0
@@ -29,6 +29,7 @@ if all(np.diag(A)) != 0:  # To use gauss seidal method metrix A diagonal element
 
     u,v = eig(T)        # spectrum
     m = max(abs(u))     # spectral radius
+    print(m)
 
     X_0 = np.array([[x_0],[y_0],[z_0]])  # initial guess metrix
 
